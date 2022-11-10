@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 export const MovieDetails = () => {
   const { productId } = useParams();
@@ -8,10 +8,10 @@ export const MovieDetails = () => {
 export const Movies = () => {
   return (
     <section>
-        <div>
-            <input type="text" />
-            <button type="submit">Search</button>
-        </div>
+      <div>
+        <input type="text" />
+        <button type="submit">Search</button>
+      </div>
     </section>
   );
 };
