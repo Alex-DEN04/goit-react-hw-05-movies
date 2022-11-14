@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'api/api';
 
 export const Reviews = () => {
-  const [state, setState] = useState(null);
+    const [state, setState] = useState(null);
+    const [error, setError] = useState(null)
   const { movieId } = useParams();
   useEffect(() => {
     const fetchMovieReviews = async () => {
@@ -11,7 +12,10 @@ export const Reviews = () => {
         const {data} = await getMovieReviews(movieId);
         setState(data);
         console.log(data);
-      } catch (e) {}
+      } catch (e) {
+        setError(e)
+      }
+        
     };
     fetchMovieReviews();
   }, [movieId]);
