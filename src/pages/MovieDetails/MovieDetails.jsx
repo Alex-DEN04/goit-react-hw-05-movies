@@ -63,7 +63,7 @@ export const MovieDetails = () => {
                 <NavLink to={'cast'}>Cast</NavLink>
               </li>
               <li>
-                <NavLink to={'reviews'}>Reviews</NavLink>{' '}
+                <NavLink to={'reviews'}>Reviews</NavLink>
               </li>
             </ul>
             <Outlet />
