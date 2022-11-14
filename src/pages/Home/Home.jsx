@@ -1,26 +1,11 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
-
-const BASE_URL = 'https://api.themoviedb.org/3/trending/all/day';
-async function getMuvies() {
-  try {
-    const response = await axios.get(BASE_URL, {
-      params: {
-        api_key: 'f895f2516a047e2a437ac29e4da65e26',
-      },
-    });
-    // console.log(response.data.results);
-    return response.data.results;
-  } catch (error) {
-    console.error(error);
-  }
-}
+import { getMovies } from 'api/api';
 
 // console.log(response);
 
 export const Home = () => {
-  const [muvies, setMuvies] = useState([]);
+  const [muvies, setMovies] = useState([]);
   // console.log(data);
 
   useEffect(() => {
@@ -31,7 +16,7 @@ export const Home = () => {
       //   setLoading(false);
       //   return;
       // }
-      getMuvies().then(response => setMuvies(response));
+      getMovies().then(response => setMovies(response));
       // setLoading(false);
     } catch (error) {
       console.log(error);
@@ -44,7 +29,9 @@ export const Home = () => {
       <ul>
         {muvies.map(item => (
           <li key={item.id}>
-            <NavLink end>{item.original_title}</NavLink>
+            <NavLink to={`/muvies/${item.id}`} end>
+              {item.title}
+            </NavLink>
           </li>
         ))}
 
