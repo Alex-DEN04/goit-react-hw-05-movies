@@ -5,7 +5,7 @@ import { getMovieById } from 'api/api';
 
 export const MovieDetails = () => {
   const [state, setState] = useState(null);
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export const MovieDetails = () => {
       } catch (e) {
         setError(e);
       } finally {
-        setLoader(false);
+        // setLoader(false);
         // console.log(state);
         // setState(null)
       }
