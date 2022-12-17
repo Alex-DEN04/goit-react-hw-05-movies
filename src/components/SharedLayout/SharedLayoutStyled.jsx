@@ -21,3 +21,9 @@ export const Menu = styled.nav`
   font-size: 20px;
   font-weight: bold;
 `;
+
+export const Container = styled.section`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+`;

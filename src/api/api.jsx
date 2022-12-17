@@ -6,9 +6,6 @@ const trendingPeriod = '/trending/movie/day';
 export const getMovies = async () => {
   const response = await axios.get(`${BASE_URL}${trendingPeriod}`, {
     params: {
-      // media_type: 'all',
-      // time_window: 'day',
-
       api_key: 'f895f2516a047e2a437ac29e4da65e26',
     },
   });
@@ -37,6 +34,16 @@ export const getMovieReviews = async id => {
   const response = await axios.get(`${BASE_URL}/movie/${id}/reviews`, {
     params: {
       api_key: 'f895f2516a047e2a437ac29e4da65e26',
+    },
+  });
+  return response;
+};
+
+export const searchMovie = async searchQuery => {
+  const response = await axios.get(`${BASE_URL}/search/movie`, {
+    params: {
+      api_key: 'f895f2516a047e2a437ac29e4da65e26',
+      query: searchQuery,
     },
   });
   return response;
