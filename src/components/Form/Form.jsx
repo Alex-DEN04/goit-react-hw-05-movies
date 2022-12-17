@@ -17,4 +17,4 @@ export const SearchForm = ({ onSubmit }) => {
       </section>
     </Formik>
   );
-}
+};

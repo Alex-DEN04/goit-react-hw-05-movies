@@ -1,14 +1,13 @@
-import { useParams, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import { getMovieById } from 'api/api';
+import { useParams, useNavigate, NavLink, Outlet } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 
-import {Loader} from '../../components/Loader/Loader';
+import { getMovieById } from 'api/api';
+import { Loader } from '../../components/Loader/Loader';
 import { Poster, Button, Genres, Genre } from './MovieDetalisStyled';
 import { Box } from 'components/Box';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [state, setState] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -74,7 +73,9 @@ export const MovieDetails = () => {
                 <NavLink to={'reviews'}>Reviews</NavLink>
               </li>
             </Box>
-            <Outlet />
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
           </div>
         </>
       )}
@@ -82,3 +83,4 @@ export const MovieDetails = () => {
     </>
   );
 };
+export default MovieDetails;

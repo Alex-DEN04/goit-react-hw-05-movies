@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-export const MoviesList = ({items}) =>{
+export const MoviesList = ({ items }) => {
   return (
     <main>
       <ul>
@@ -11,5 +11,5 @@ export const MoviesList = ({items}) =>{
         ))}
       </ul>
     </main>
-  )
-}
+  );
+};

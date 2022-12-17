@@ -5,10 +5,10 @@ import { getMovieCredits } from 'api/api';
 import { ActorImg } from './CastStyled';
 import { Loader } from 'components/Loader/Loader';
 
-export const Cast = () => {
+const Cast = () => {
   const [state, setState] = useState(null);
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const Cast = () => {
 
   return (
     <>
-      {loading && <Loader/>}
+      {loading && <Loader />}
       {state && (
         <ul>
           {state.cast.map(item => (
@@ -48,8 +48,9 @@ export const Cast = () => {
             </li>
           ))}
         </ul>
-      )};
-      {error && <div> Something went wrong, please try again </div>}
+      )}
+      ;{error && <div> Something went wrong, please try again </div>}
     </>
   );
 };
+export default Cast;

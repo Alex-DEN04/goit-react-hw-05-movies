@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { searchMovie } from 'api/api';
-import {Loader} from 'components/Loader/Loader';
-import {SearchForm} from '../../components/Form/Form';
-import {MoviesList} from 'components/MoviesList/MoviesList';
+import { Loader } from 'components/Loader/Loader';
+import { SearchForm } from '../../components/Form/Form';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -27,7 +27,7 @@ export const Movies = () => {
     const fetchMovie = async () => {
       try {
         setLoading(true);
-        const {data} = await searchMovie(query);
+        const { data } = await searchMovie(query);
         if (data.results.length === 0 && query.trim() === '') {
           return;
         }
@@ -56,3 +56,4 @@ export const Movies = () => {
     </>
   );
 };
+export default Movies;

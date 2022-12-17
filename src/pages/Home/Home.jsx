@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { getMovies } from 'api/api';
-import {Loader} from 'components/Loader/Loader';
-import {MoviesList} from 'components/MoviesList/MoviesList';
+import { Loader } from 'components/Loader/Loader';
+import { MoviesList } from 'components/MoviesList/MoviesList';
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -21,7 +21,7 @@ export const Home = () => {
       }
     };
     trendingMovies();
-    
+
     return () => {
       setMovies(null);
       setError(null);
@@ -37,3 +37,4 @@ export const Home = () => {
     </>
   );
 };
+export default Home;

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'api/api';
 import { Loader } from 'components/Loader/Loader';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [state, setState] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ export const Reviews = () => {
       }
     };
     fetchMovieReviews();
-    
+
     return () => {
       setState(null);
       setError(null);
@@ -30,7 +30,7 @@ export const Reviews = () => {
 
   return (
     <>
-      {loading && <Loader/>}
+      {loading && <Loader />}
       {state &&
         ((state.results.length < 1 && (
           <p>We don't have any reviews for this film</p>
@@ -48,3 +48,4 @@ export const Reviews = () => {
     </>
   );
 };
+export default Reviews;
