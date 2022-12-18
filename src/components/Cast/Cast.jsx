@@ -10,6 +10,7 @@ const Cast = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
+  const pathPosterUrl = 'https://image.tmdb.org/t/p/w300';
 
   useEffect(() => {
     const fetchMovieCredits = async () => {
@@ -38,10 +39,7 @@ const Cast = () => {
           {state.cast.map(item => (
             <li key={item.id}>
               {item.profile_path && (
-                <ActorImg
-                  src={`https://image.tmdb.org/t/p/w300${item.profile_path}`}
-                  alt=""
-                />
+                <ActorImg src={`${pathPosterUrl}${item.profile_path}`} alt="" />
               )}
               <p>{item.name}</p>
               <p>Character: {item.character}</p>
