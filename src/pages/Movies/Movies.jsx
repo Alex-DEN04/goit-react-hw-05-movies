@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import { SearchForm } from '../../components/Form/Form';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
-const Movies = () => {
+const Movies = props => {
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -16,11 +16,7 @@ const Movies = () => {
 
   const handleSubmit = ({ input }) => {
     const value = input.trim();
-    if (value) {
-      setSearchParams({ query: value });
-    } else {
-      setSearchParams({});
-    }
+    setSearchParams(value !== '' ? { query: value } : {});
   };
 
   useEffect(() => {

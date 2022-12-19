@@ -1,4 +1,10 @@
-import { useParams, useNavigate, NavLink, Outlet } from 'react-router-dom';
+import {
+  useParams,
+  useNavigate,
+  NavLink,
+  Outlet,
+  useLocation,
+} from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
 import { BsArrowLeft } from 'react-icons/bs';
 
@@ -14,6 +20,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const navigate = useNavigate();
   const posterUrl = 'https://image.tmdb.org/t/p/w500';
+  const location = useLocation();
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -30,8 +37,8 @@ const MovieDetails = () => {
     };
     fetchMovie();
   }, [movieId]);
-
-  const goBack = () => navigate(-1);
+  
+  const goBack = () => navigate(location.state.from);
   return (
     <>
       <Button onClick={goBack}>
@@ -67,10 +74,10 @@ const MovieDetails = () => {
             <p>Additional information:</p>
             <Box boxShadow="0 4px 2px -2px gray" pb={3} as="ul">
               <li>
-                <NavLink to={'cast'}>Cast</NavLink>
+                <NavLink to={'cast'} state={{from:location.state.from}}>Cast</NavLink>
               </li>
               <li>
-                <NavLink to={'reviews'}>Reviews</NavLink>
+                <NavLink to={'reviews'} state={{from:location.state.from}}>Reviews</NavLink>
               </li>
             </Box>
             <Suspense fallback={<Loader />}>
