@@ -6,7 +6,7 @@ import { Loader } from 'components/Loader/Loader';
 import { SearchForm } from '../../components/Form/Form';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 
-const Movies = props => {
+const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
