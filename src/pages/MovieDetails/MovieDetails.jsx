@@ -37,7 +37,7 @@ const MovieDetails = () => {
     };
     fetchMovie();
   }, [movieId]);
-  
+
   const goBack = () => navigate(location.state.from);
   return (
     <>
@@ -74,10 +74,14 @@ const MovieDetails = () => {
             <p>Additional information:</p>
             <Box boxShadow="0 4px 2px -2px gray" pb={3} as="ul">
               <li>
-                <NavLink to={'cast'} state={{from:location.state.from}}>Cast</NavLink>
+                <NavLink to={'cast'} state={{ from: location.state.from }}>
+                  Cast
+                </NavLink>
               </li>
               <li>
-                <NavLink to={'reviews'} state={{from:location.state.from}}>Reviews</NavLink>
+                <NavLink to={'reviews'} state={{ from: location.state.from }}>
+                  Reviews
+                </NavLink>
               </li>
             </Box>
             <Suspense fallback={<Loader />}>
