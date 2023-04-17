@@ -1,4 +1,5 @@
 import { Formik, Form, Field } from 'formik';
+import PropTypes from 'prop-types';
 
 export const SearchForm = ({ onSubmit }) => {
   const initialValues = { input: '' };
@@ -18,3 +19,7 @@ export const SearchForm = ({ onSubmit }) => {
     </Formik>
   );
 };
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.isRequired,
+}

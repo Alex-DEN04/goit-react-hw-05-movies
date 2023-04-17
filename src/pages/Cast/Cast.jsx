@@ -47,7 +47,7 @@ const Cast = () => {
           ))}
         </ul>
       )}
-      ;{error && <div> Something went wrong, please try again </div>}
+      {error && <div> Something went wrong, please try again </div>}
     </>
   );
 };

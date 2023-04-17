@@ -28,7 +28,6 @@ const MovieDetails = () => {
         setLoading(true);
         const { data } = await getMovieById(movieId);
         setState(data);
-        setError(null);
       } catch (e) {
         setError(e);
       } finally {
@@ -36,6 +35,10 @@ const MovieDetails = () => {
       }
     };
     fetchMovie();
+    return () => {
+      setState(null);
+      setError(null);
+    };
   }, [movieId]);
 
   const goBack = () => navigate(location.state.from);
