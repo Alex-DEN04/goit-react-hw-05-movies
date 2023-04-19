@@ -6,7 +6,7 @@ export const MoviesList = ({ items }) => {
   return (
     <main>
       <ul>
-        {items.map(({id, title, original_title}) => (
+        {items.map(({ id, title, original_title }) => (
           <li key={id}>
             <NavLink to={`/movies/${id}`} state={{ from: location }}>
               {title || original_title}
@@ -18,9 +18,8 @@ export const MoviesList = ({ items }) => {
   );
 };
 
-
 MoviesList.propTypes = {
-    id: PropTypes.number,
-    title: PropTypes.string,
-    original_title: PropTypes.string,
-}
+  id: PropTypes.number,
+  title: PropTypes.string,
+  original_title: PropTypes.string,
+};

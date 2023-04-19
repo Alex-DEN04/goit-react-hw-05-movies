@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { getMovieCredits } from 'api/api';
-import { ActorImg } from './CastStyled';
+import { ActorImg, List } from './CastStyled';
 import { Loader } from 'components/Loader/Loader';
 
 const Cast = () => {
@@ -10,6 +10,8 @@ const Cast = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
+  const avatar =
+    'https://kartinkin.net/pics/uploads/posts/2022-09/1662642152_1-kartinkin-net-p-risunok-na-avatarku-dlya-muzhchin-instagra-1.jpg';
   const pathPosterUrl = 'https://image.tmdb.org/t/p/w300';
 
   useEffect(() => {
@@ -24,7 +26,6 @@ const Cast = () => {
       }
     };
     fetchMovieCredits();
-
     return () => {
       setState(null);
       setError(null);
@@ -35,17 +36,22 @@ const Cast = () => {
     <>
       {loading && <Loader />}
       {state && (
-        <ul>
-          {state.cast.map(item => (
-            <li key={item.id}>
-              {item.profile_path && (
-                <ActorImg src={`${pathPosterUrl}${item.profile_path}`} alt="" />
+        <List>
+          {state.cast.map(({ cast_id, profile_path, name, character }) => (
+            <li key={cast_id}>
+              {profile_path ? (
+                <ActorImg
+                  src={`${pathPosterUrl}${profile_path}`}
+                  alt="avatar"
+                />
+              ) : (
+                <ActorImg src={avatar} alt="avatar" />
               )}
-              <p>{item.name}</p>
-              <p>Character: {item.character}</p>
+              <p>{name}</p>
+              <p>Character: {character}</p>
             </li>
           ))}
-        </ul>
+        </List>
       )}
       {error && <div> Something went wrong, please try again </div>}
     </>

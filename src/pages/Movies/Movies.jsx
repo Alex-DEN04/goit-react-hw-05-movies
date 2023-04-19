@@ -16,7 +16,7 @@ const Movies = () => {
 
   const handleSubmit = ({ input }) => {
     const value = input.trim();
-    setSearchParams(value !== '' ? { query: value } : {});
+    setSearchParams(value ? { query: value } : {});
   };
 
   useEffect(() => {
@@ -24,9 +24,6 @@ const Movies = () => {
       try {
         setLoading(true);
         const { data } = await searchMovie(query);
-        if (data.results.length === 0 && query.trim() === '') {
-          return;
-        }
         setMovies(data.results);
       } catch (e) {
         setError(e);
@@ -42,11 +39,11 @@ const Movies = () => {
       setError(null);
     };
   }, [query]);
-
   return (
     <>
       <SearchForm onSubmit={handleSubmit} />
-      {error && <div>Sorry, no movies were found with the name {query}.</div>}
+      {error && <p>Sorry, no movies were found with the name {query}</p>}
+      {movies && movies.length < 1 && <p>Sorry, no movies were found with the name {query}</p>}
       {movies && <MoviesList items={movies} />}
       {loading && <Loader />}
     </>

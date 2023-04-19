@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'api/api';
 import { Loader } from 'components/Loader/Loader';
+import { List } from './ReviewsStyled';
 
 const Reviews = () => {
   const [state, setState] = useState(null);
@@ -35,14 +36,14 @@ const Reviews = () => {
         ((state.results.length < 1 && (
           <p>We don't have any reviews for this film</p>
         )) || (
-          <ul>
+          <List>
             {state.results.map(item => (
               <li key={item.id}>
                 <h4>Author: {item.author}</h4>
                 <p>{item.content}</p>
               </li>
             ))}
-          </ul>
+          </List>
         ))}
       {error && <div> Something went wrong, please try again </div>}
     </>
